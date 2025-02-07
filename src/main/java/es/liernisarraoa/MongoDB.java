@@ -7,7 +7,7 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 
 public class MongoDB {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         String uri = "mongodb+srv://lierni:<1234>@cluster0.hnyhe.mongodb.net/";  // Ajusta esto si es necesario
 
         try (MongoClient mongoClient = MongoClients.create(uri)) {
@@ -16,18 +16,19 @@ public class MongoDB {
         } catch (Exception e) {
             System.out.println("❌ Error al conectar a MongoDB: " + e.getMessage());
         }
-    }
-    /*public static void main(String[] args) {
-        // Reemplaza con tu cadena de conexión de MongoDB Atlas
-        String uri = "mongodb://localhost:27017";
+    }*/
+    public static void main(String[] args) {
+        String uri = "mongodb+srv://lierni:1234@cluster0.hnyhe.mongodb.net/";
 
         try (MongoClient mongoClient = MongoClients.create(uri)) {
+            //Seleccionar base de datos
             MongoDatabase database = mongoClient.getDatabase("sample_airbnb");
+            //Seleccionar coleccion
             MongoCollection<Document> collection = database.getCollection("listingsAndReviews");
 
-            // Crear (Insertar) un nuevo alojamiento
+            // Crear un nuevo alojamiento
             Document newListing = new Document("name", "Cozy Studio in Downtown")
-                    .append("summary", "Un pequeño pero acogedor apartamento en el centro de la ciudad")
+                    .append("summary", "Apartamento")
                     .append("bedrooms", 1)
                     .append("price", 75);
             collection.insertOne(newListing);
@@ -57,5 +58,5 @@ public class MongoDB {
             System.out.println("--- Eliminar ---");
             System.out.println("Alojamiento eliminado.");
         }
-    }*/
+    }
 }
